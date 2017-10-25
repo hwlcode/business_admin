@@ -1,6 +1,6 @@
 <div class="box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title">产品信息</h3>
+        <h3 class="box-title">banner信息</h3>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
@@ -32,6 +32,7 @@
                 <label class="col-sm-2 control-label">banner</label>
 
                 <div class="col-sm-10">
+                    <input type="hidden" formControlName="banner">
                     <dropzone [config]="config" [message]="'点击上传图片'" (error)="onUploadError($event)"
                               (success)="onUploadSuccess($event)"></dropzone>
                 </div>

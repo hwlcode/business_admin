@@ -4,22 +4,12 @@
             <div class="box-header">
                 <h3 class="box-title">
                     <button class="btn btn-primary btn-sm" (click)="create()"><i class="fa fa-plus" aria-hidden="true"></i> 新建</button>
-                    <span class="help-tips">只显示最新3条记录的活动</span>
+                    <span class="help-tips">App上只显示最新3条记录的活动</span>
                 </h3>
-
-                <!--<div class="box-tools">-->
-                    <!--<div class="input-group input-group-sm" style="width: 150px;">-->
-                        <!--<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">-->
-
-                        <!--<div class="input-group-btn">-->
-                            <!--<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
+                <table class="table table-hover text-center">
                     <tr>
                         <th>ID</th>
                         <th>图片</th>
@@ -28,28 +18,21 @@
                         <th>日期</th>
                         <th width="80">操作</th>
                     </tr>
-                    <tr>
-                        <td>183</td>
-                        <td><img src="../../../assets/user2-160x160.jpg" alt="" width="80" height="80"></td>
-                        <td>屌爆了</td>
-                        <td>14元/斤</td>
-                        <td>14元/斤</td>
+                    <tr *ngFor="let banner of banners; let i = index;">
+                        <td>{{ i + 1 }}</td>
+                        <td><img src="{{'http://localhost:8000' + banner.banner.path}}" alt="" width="80" height="80"></td>
+                        <td>{{ banner.name }}</td>
+                        <td>{{ banner.link }}</td>
+                        <td>{{ banner.createdAt }}</td>
                         <td>
-                            <!--<button class="btn btn-info btn-xs" (click)="update()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 编辑</button>-->
-                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除</button>
+                            <button class="btn btn-danger btn-xs" (click)="remove(banner)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                         </td>
                     </tr>
                 </table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <ul class="pagination pagination-sm no-margin pull-right">
-                    <li><a href="#">«</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">»</a></li>
-                </ul>
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
             </div>
         </div>
     </div>
