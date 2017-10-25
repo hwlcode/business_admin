@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">
+                    <button class="btn btn-primary btn-sm" (click)="create()"><i class="fa fa-plus" aria-hidden="true"></i> 新建</button>
+                </h3>
+
+                <!--<div class="box-tools">-->
+                    <!--<div class="input-group input-group-sm" style="width: 150px;">-->
+                        <!--<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">-->
+
+                        <!--<div class="input-group-btn">-->
+                            <!--<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>图片</th>
+                        <th>名称</th>
+                        <th>单价</th>
+                        <th width="150">操作</th>
+                    </tr>
+                    <tr *ngFor="let product of products; let i = index;">
+                        <td>{{ i+1 }}</td>
+                        <td><img src="{{'http://localhost:8000' + product.banner.path}}" alt="" width="80" height="80"></td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}元/斤</td>
+                        <td>
+                            <button class="btn btn-info btn-xs" (click)="update(product)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            <button class="btn btn-danger btn-xs" (click)="remove(product)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+.has-error .dropzone {
+    border: 2px dotted red !important;
+}
+
+.dropzone {
+    border: 2px dotted rgba(0, 0, 0, 0.3)
+}

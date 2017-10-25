@@ -1,0 +1,57 @@
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">产品信息</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form class="form-horizontal" [formGroup]="formModel">
+        <div class="box-body">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">产品名称</label>
+                <div class="col-sm-6"
+                     [class.has-error]="formModel.get('name').touched && formModel.hasError('required', 'name') || formModel.hasError('minlength', 'name')">
+                    <input type="text" class="form-control" id="productName" formControlName="name">
+                    <div class="help-block"
+                         [class.hidden]="formModel.get('name').untouched || !formModel.hasError('required', 'name')">
+                        产品名称必填
+                    </div>
+                    <div class="help-block"
+                         [class.hidden]="formModel.get('name').untouched || !formModel.hasError('minlength', 'name')">
+                        至少需要输入2两个字
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">单价</label>
+
+                <div class="col-sm-3"
+                     [class.has-error]="formModel.get('price').touched && formModel.hasError('number', 'price')">
+                    <div class="input-group">
+                        <input type="text" class="form-control" formControlName="price">
+                        <span class="input-group-addon">元/斤</span>
+                    </div>
+                    <div class="help-block"
+                         [class.hidden]="formModel.get('price').untouched || !formModel.hasError('number', 'price')">
+                        {{formModel.getError('number', 'price')?.description}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">产品图片</label>
+
+                <div class="col-sm-3">
+                    <input type="hidden" formControlName="banner">
+                    <dropzone [config]="config" [message]="'点击上传产品图片'" (error)="onUploadError($event)"
+                              (success)="onUploadSuccess($event)"></dropzone>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button class="btn btn-default" (click)="cannel()">取消</button>
+            <button class="btn btn-info pull-right" *ngIf="isSave" (click)="save()">保存</button>
+            <button class="btn btn-info pull-right" *ngIf="!isSave" (click)="update(product)">更新</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>
