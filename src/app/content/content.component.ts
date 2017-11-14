@@ -19,6 +19,10 @@ export class ContentComponent implements OnInit {
                     this.pageTitle = '产品管理'
                 }else if (event.url.startsWith( '/banner')) {
                     this.pageTitle = 'Banner管理'
+                }else if (event.url.startsWith( '/custom')) {
+                    this.pageTitle = '客户管理'
+                }else if (event.url.startsWith( '/order')) {
+                    this.pageTitle = '订单管理'
                 }
             })
     }

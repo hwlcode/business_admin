@@ -28,7 +28,7 @@
                     </tr>
                     <tr *ngFor="let product of products; let i = index;">
                         <td>{{ i+1 }}</td>
-                        <td><img src="{{'http://localhost:8000' + product.banner.path}}" alt="" width="80" height="80"></td>
+                        <td><img src="{{product.banner.path}}" alt="" width="80" height="80"></td>
                         <td>{{product.name}}</td>
                         <td>{{product.price}}元/斤</td>
                         <td>

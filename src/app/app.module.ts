@@ -31,7 +31,9 @@ const routeConfig: Routes = [
     {path: 'product/:id', component: ProductFormComponent},
     {path: 'banners', component: BannerListComponent},
     {path: 'banner/:id', component: BannerFormComponent},
-    {path: 'login', component: LoginComponent}
+    {path: 'login', component: LoginComponent},
+    {path: 'custom', component: CustomListComponent},
+    {path: 'order', component: OrderListComponent}
 ]
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
