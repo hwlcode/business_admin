@@ -20,7 +20,7 @@
                     </tr>
                     <tr *ngFor="let banner of banners; let i = index;">
                         <td>{{ i + 1 }}</td>
-                        <td><img src="{{'http://localhost:8000' + banner.banner.path}}" alt="" width="80" height="80"></td>
+                        <td><img src="{{banner.banner.path}}" alt="" width="80" height="80"></td>
                         <td>{{ banner.name }}</td>
                         <td>{{ banner.link }}</td>
                         <td>{{ banner.createdAt }}</td>
