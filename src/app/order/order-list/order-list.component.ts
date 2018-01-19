@@ -63,9 +63,6 @@ export class OrderListComponent implements OnInit {
                 if (json.code === 0) {
                     window.location.reload();
                 }
-            })
-        // 获得积分
-
-        // 发送通知
+            });
     }
 }
