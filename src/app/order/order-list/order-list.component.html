@@ -1,3 +1,51 @@
-<p>
-  order-list works!
-</p>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <!--<div class="box-header">-->
+            <!--<h3 class="box-title">-->
+            <!--</h3>-->
+            <!--</div>-->
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-bordered out-table" *ngFor="let order of orderList">
+                    <tr>
+                        <th width="70%">订单号：{{order.sn}} &nbsp;&nbsp;{{order.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</th>
+                        <th width="10%">总价</th>
+                        <th width="10%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="table text-left in-table" *ngFor="let product of order.products">
+                                <tr>
+                                    <td width="60"><img src="{{product.image}}" alt="" width="60" height="60"></td>
+                                    <td>{{product.name}}</td>
+                                    <td class="text-center" width="10%">x{{product.orderNum}}</td>
+                                    <td class="text-center" width="10%">￥{{product.price}} 元</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="text-center">￥{{order.sumPrice}}元</td>
+                        <td class="text-center green">{{ order.status == 0 ? '等待发货' : '己发货'}}</td>
+                        <td class="text-center"><button class="btn btn-primary btn-xs" *ngIf="order.status == 0" (click)="open(order._id)">发货</button></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="p-modal" *ngIf="isShow">
+    <h2>操作提示</h2>
+    <p>点击发货，客户将收到通知，请慎重操作！</p>
+    <div>
+        <button class="btn btn-default btn-sm" (click)="cannel()">取消</button>
+        <button class="btn btn-primary btn-sm save" (click)="saveOrder()">确认发货</button>
+    </div>
+</div>
+<div class="shadow" *ngIf="isShow"></div>
+

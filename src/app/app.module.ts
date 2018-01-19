@@ -23,6 +23,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './user/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import {NgZorroAntdModule} from 'ng-zorro-antd';
 
 const routeConfig: Routes = [
     {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -66,8 +67,9 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
         HttpClientModule,
         FormsModule, // 模板式表单
         ReactiveFormsModule, // 响应式表单
-        NgbModule.forRoot(),
-        DropzoneModule.forRoot(DROPZONE_CONFIG),
+        NgbModule.forRoot(), // bootstrap 后台框架
+        // NgZorroAntdModule.forRoot(), // 蚂蚁后台框架
+        DropzoneModule.forRoot(DROPZONE_CONFIG), // 拖拉上传
         RouterModule.forRoot(routeConfig)
     ],
     providers: [],

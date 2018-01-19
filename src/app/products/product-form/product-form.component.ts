@@ -15,7 +15,7 @@ import {Observable} from 'rxjs/Observable';
 })
 export class ProductFormComponent implements OnInit {
     formModel: FormGroup;
-    product: Product = new Product('', '', '', ''); // 数据还没有回来之前给一个默认值
+    product: Product = new Product('', '', '', '', 0); // 数据还没有回来之前给一个默认值
     isSave: Boolean = true;
     config: DropzoneConfigInterface = {
         url: '/api/upload',
@@ -32,7 +32,8 @@ export class ProductFormComponent implements OnInit {
         this.formModel = fb.group({
             name: ['', [Validators.required, Validators.minLength(2)]],
             price: ['', [number]],
-            banner: ['']
+            banner: [''],
+            code: [0]
         });
 
         const id = this.routeInfo.snapshot.params['id'];
@@ -41,11 +42,13 @@ export class ProductFormComponent implements OnInit {
                 if (id != 0) {
                     self.isSave = false;
                 }
-                this.product = res;
+
                 this.formModel.reset({
                     name: res.name,
-                    price: res.price
-                })
+                    price: res.price,
+                    code: res.code
+                });
+                this.product = res;
             }
         );
     }
@@ -55,7 +58,7 @@ export class ProductFormComponent implements OnInit {
     }
 
     onUploadSuccess(event: any) {
-        this.formModel.value.banner = event[1].id;
+        this.formModel.controls['banner'].setValue(event[1].id);
     }
 
     cannel() {
@@ -70,7 +73,8 @@ export class ProductFormComponent implements OnInit {
             params.append('name', this.formModel.value.name);
             params.append('price', this.formModel.value.price);
             params.append('banner', this.formModel.value.banner);
-
+            params.append('code', this.formModel.value.code);
+console.log(params);
             this.http.post(url, params)
                 .map(res => res.json())
                 .subscribe(function (data) {
@@ -93,6 +97,7 @@ export class ProductFormComponent implements OnInit {
             params.append('name', this.formModel.value.name);
             params.append('price', this.formModel.value.price);
             params.append('banner', this.formModel.value.banner);
+            params.append('code', this.formModel.value.code);
 
             this.http.post(url, params)
                 .map(res => res.json())
@@ -109,6 +114,7 @@ class Product {
     constructor(public _id: string,
                 public banner: string,
                 public name: string,
-                public price: string) {
+                public price: string,
+                public code: number) {
     }
 }

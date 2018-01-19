@@ -1,0 +1,46 @@
+.green {
+    color: green;
+}
+
+.out-table {
+    margin-bottom: 15px;
+}
+
+.out-table th { background: #f2f2f2; }
+
+.in-table tbody tr td {
+    border-top: 1px transparent solid;
+}
+
+.p-modal {
+    width: 400px;
+    height: 200px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -100px 0 0 -200px;
+    z-index: 1036;
+    background: #fff;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    outline: 5px #ddd solid;
+}
+.p-modal h2{
+    font-size: 20px;
+    padding-top: 20px;
+}
+.p-modal p{
+    margin: 30px 0;
+}
+.save{
+    margin-left: 30px;
+}
+.shadow{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1035;
+}

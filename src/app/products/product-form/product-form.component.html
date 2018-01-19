@@ -45,6 +45,17 @@
                               (success)="onUploadSuccess($event)"></dropzone>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">积分兑换</label>
+                <div class="col-sm-2"
+                     [class.has-error]="formModel.get('code').touched && formModel.hasError('required', 'code')">
+                    <input type="number" class="form-control" formControlName="code">
+                    <div class="help-block"
+                         [class.hidden]="formModel.get('code').untouched || !formModel.hasError('required', 'code')">
+                        积分兑换必填
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">

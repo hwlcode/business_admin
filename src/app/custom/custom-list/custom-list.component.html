@@ -1,3 +1,43 @@
-<p>
-  custom-list works!
-</p>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <!--<div class="box-header">-->
+                <!--<h3 class="box-title">-->
+                <!--</h3>-->
+            <!--</div>-->
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>头像</th>
+                        <th>名称</th>
+                        <th>手机</th>
+                        <th>性别</th>
+                        <th>生日</th>
+                        <th>住址</th>
+                        <th>积分</th>
+                        <!--<th width="150">操作</th>-->
+                    </tr>
+                    <tr *ngFor="let user of users; let i = index;">
+                        <td>{{ i+1 }}</td>
+                        <td><img src="{{user.avatar}}" alt="" width="40" height="40"></td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.sex}}</td>
+                        <td>{{user.birth}}</td>
+                        <td>{{user.address}}</td>
+                        <td>{{user.code}}分</td>
+                        <!--<td>-->
+                            <!--<button class="btn btn-info btn-xs" (click)="update(product)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>-->
+                        <!--</td>-->
+                    </tr>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" aria-label="Default pagination" (pageChange)="pageChange($event)"></ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
