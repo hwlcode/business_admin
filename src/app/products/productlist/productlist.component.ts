@@ -12,7 +12,7 @@ export class ProductlistComponent implements OnInit {
     public products;
     page: Number = 1;
     collectionSize: Number = 0;
-    pageSize: Number = 3;
+    pageSize: Number = 10;
 
     constructor(public router: Router, public http: Http) {
     }

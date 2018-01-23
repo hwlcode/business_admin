@@ -10,7 +10,7 @@ export class OrderListComponent implements OnInit {
     orderList: any;
     page: Number = 1;
     collectionSize: Number = 0;
-    pageSize: Number = 3;
+    pageSize: Number = 10;
     isShow: Boolean = false;
     targetOrderId: String;
 
@@ -34,7 +34,7 @@ export class OrderListComponent implements OnInit {
     }
 
     pageChange(page: number) {
-        this.http.get('/api/order/list').map(res => res.json()).subscribe(res => {
+        this.http.get('/api/order/list?q=' + page).map(res => res.json()).subscribe(res => {
             if (res.code === 0) {
                 this.orderList = res.orders;
                 this.orderList.map(order => {
